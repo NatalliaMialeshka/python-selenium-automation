@@ -37,6 +37,14 @@ Feature: Amazon search tests
     Then Verify cart has 1 item(s)
 
 
+  Scenario: Verify that product on Amazon search results has name and image
+    Given Open Amazon page
+    When Input text watches
+    And Click on search button
+    Then Verify that text "watches" is shown
+    And Verify that every product has name and image
+
+
 #  Scenario: User can click on a hamburger menu
 #    Given Open Amazon page
 #    Then Verify hamburger menu icon present
