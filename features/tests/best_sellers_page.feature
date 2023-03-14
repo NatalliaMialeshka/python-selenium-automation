@@ -5,3 +5,9 @@ Feature: Best Sellers Page tests
     Given Open Amazon page
     When Click on Best Sellers button
     Then Verify page has 5 links on the top
+
+
+  Scenario: Bestsellers links could be opened
+    Given Open Amazon page
+    When Click on Best Sellers button
+    Then User can click through links and verify them

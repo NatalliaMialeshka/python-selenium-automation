@@ -1,0 +1,8 @@
+from pages.base_page import Page
+
+
+class SignInPage(Page):
+
+    def verify_signin_page_opens(self):
+        self.verify_url_contains_query('https://www.amazon.com/ap/signin')
+

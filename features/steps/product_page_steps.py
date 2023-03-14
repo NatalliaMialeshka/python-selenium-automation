@@ -4,7 +4,7 @@ from behave import when, given, then
 from time import sleep
 
 
-ADD_TO_CART_BTN = (By.ID, 'add-to-cart-button')
+#ADD_TO_CART_BTN = (By.ID, 'add-to-cart-button')
 COLOR_OPTIONS = (By.CSS_SELECTOR, "#variation_color_name li")
 CURRENT_COLOR = (By.CSS_SELECTOR, "#variation_color_name .selection")
 
@@ -16,8 +16,9 @@ def open_product(context, product_id):
 
 @when('Click on Add to cart button')
 def click_add_to_cart(context):
-    context.driver.find_element(*ADD_TO_CART_BTN).click()
-    context.driver.wait.until(EC.url_contains('https://www.amazon.com/cart/smart-wagon'))
+    context.app.product_page.click_add_to_cart()
+    context.app.product_page.verify_product_added_to_cart()
+    #context.app.wait.until(EC.url_contains('https://www.amazon.com/cart/smart-wagon'))
 
 
 @then('Verify user can click through colors')
