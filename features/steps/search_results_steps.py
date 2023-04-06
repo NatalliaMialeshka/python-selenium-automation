@@ -27,3 +27,8 @@ def verify_every_prod_has_name_and_image(context):
     for item in all_products:
         context.driver.find_element(*PRODUCT_IMAGE).is_displayed()
         context.driver.find_element(*PRODUCT_NAME_FIELD).is_displayed()
+
+
+@then('Verify {category} department is selected')
+def verify_selected_dept(context, category):
+    context.app.search_results_page.verify_selected_dept(category)

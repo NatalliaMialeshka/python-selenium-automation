@@ -21,6 +21,11 @@ def click_add_to_cart(context):
     #context.app.wait.until(EC.url_contains('https://www.amazon.com/cart/smart-wagon'))
 
 
+@when('Hover over New Arrivals Tab')
+def hover_new_arrivals(context):
+    context.app.product_page.hover_new_arrivals()
+
+
 @then('Verify user can click through colors')
 def verify_user_can_select_colors(context):
     context.driver.find_element(*COLOR_OPTIONS).click()
@@ -44,3 +49,8 @@ def verify_user_can_pick_different_colors(context):
     all_color_options = context.driver.find_elements(*COLOR_OPTIONS)
     for color in all_color_options:
         color.click()
+
+
+@then('Verify that user sees category Women')
+def verify_women_category(context):
+    context.app.product_page.verify_women_category()

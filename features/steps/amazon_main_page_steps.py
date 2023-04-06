@@ -69,6 +69,21 @@ def click_cart(context):
     context.app.header.click_cart()
 
 
+@when('Click on ham menu')
+def click_ham_menu(context):
+    context.ham_menu.click()
+
+
+@when('Hover over language options')
+def hover_lang_options(context):
+    context.app.header.hover_lang_options()
+
+
+@when('Select department by alias {alias}')
+def select_department(context, alias):
+    context.app.header.select_department(alias)
+
+
 @then('Verify Sign in popup shown')
 def verify_signin_popup_visible(context):
     context.driver.wait.until(EC.element_to_be_clickable(SIGN_IN_BUTTON), message='Sigin btn not clickable'),
@@ -86,12 +101,6 @@ def verify_signin_popup_visible(context):
 def verify_ham_menu_present(context):
     context.ham_menu = context.driver.find_element(*HAM_MENU)
     #context.driver.refresh()
-
-
-@when('Click on ham menu')
-def click_ham_menu(context):
-    context.ham_menu.click()
-
 
 
 @then('Verify that footer has {expected_amount} links')
@@ -112,3 +121,8 @@ def verify_header_link_count(context, expected_amount):
     expected_amount = int(expected_amount)
     header_links = context.driver.find_elements(*HEADER_LINKS)
     assert len(header_links) == expected_amount, f'Expected {expected_amount} links but got {len(header_links)}'
+
+
+@then('Verify Spanish option present')
+def verify_lang_shown(context):
+    context.app.header.verify_lang_shown()
